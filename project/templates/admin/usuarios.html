@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+{% block contents%}
+<br>
+<div class="row">
+    <div class="col-2">
+        <div class="gallery">
+            <h1>Usuarios registrados</h1>
+            <a href="/agregar-usuario" class="btn btn-success text-white" style="background:darkorange;
+    width:50%;
+    font-size:16px;
+    height:40px;
+    color:#fff;
+    text-decoration:none;
+    border:none;"> Agregar nuevo usuario</a>
+            <form method="POST" action="/usuarios">
+                <select name="estatus" class="form-control" style="width:50%;
+                font-size:16px;
+                height:40px;">
+                    <option value="1">Ver usuarios activos</option>
+                    <option value="0">Ver usuarios inactivos</option>
+                </select>
+                <button type="submit" class="form-control" style="background:#ffa420;
+            width:50%;
+            font-size:16px;
+            height:40px;
+            color:#fff;
+            text-decoration:none;
+            border:none;">Cambiar vista</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="usuarios">
+        {% for usuario in usuarios %}
+        {% if not usuario.roles[0].name == 'Cliente'%}
+        <div class="card" style="width: 13rem;">
+            <img src="../static/img/usuario.png" class="card-img-top" width="300" alt="icono-usuario">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase"><b>{{usuario.nombre}} {{usuario.apellidos}}</b></h5>
+                <h6 class='card-text'><b>Rol</b></h6>
+                <p class='card-text'>{{usuario.roles[0].name}}</p>
+                <h6 class='card-text'><b>Correo/nombre de usuario</b></h6>
+                <p class='card-text'>{{usuario.email}}</p>
+                {% if usuario.estatus==1%}
+                <a href="modificar-usuario?id={{usuario.id}} " class="btn btn-warning">
+                    Modificar
+                </a>
+                <a href="eliminar-usuario?id={{usuario.id}} " class="btn btn-danger" style="background: #d27300; width:20%;
+                    font-size:16px;
+                    height:40px;
+                    color:#fff;
+                    text-decoration:none;
+                    border:none;">
+                    Eliminar
+                </a>
+                {% else%}
+                <a href="reactivar-usuario?id={{usuario.id}} " class="btn btn-danger" style="background: #d27300; width:20%;
+                    font-size:16px;
+                    height:40px;
+                    color:#fff;
+                    text-decoration:none;
+                    border:none;">
+                    Reactivar
+                </a>
+                {%endif%}
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
+</div>
+    {%endblock%}

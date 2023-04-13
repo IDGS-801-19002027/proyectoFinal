@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CASA DE LAS FLORES</title>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/ico" href="../static/img/logo-flores-prototipo1.png">
+  <link rel="stylesheet" href="../static/css/estiloLogin.css">
+</head>
+
+<body>
+  <!--<center><img src="../static/img/logo-flores-prototipo1.png" width="200"></center>>-->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div style="background-color: red; color:white">
+    {{ messages[0] }}
+  </div>
+  {% endif %}
+  {% endwith %}
+    <div class="login-form">
+      <h1>Iniciar sesión</h1>
+      <br>
+      <form method="POST" action="/login">
+      <div class="field form-group">
+        <div class="control">
+          <input type="text" class="form-control" placeholder="Correo/Nombre de usuario" name="email" autofocus=""
+            required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox">
+          Recuerdame
+        </label>
+      </div>
+      <button id="login">Iniciar sesión</button>
+      <hr>
+    </form>
+      <button id="back" onclick="window.location.href='/'">Cancelar</button>
+    </div>
+</body>
+
+</html>
