@@ -1,0 +1,125 @@
+{% extends "main.html" %}
+
+{% block contents %}
+
+<style>
+  /* Estilos para la tabla */
+  table th {
+    background-color: #e48200 !important;
+    color: white;  
+  }
+
+  table>tbody>tr>td {
+    vertical-align: middle !important;
+  }
+
+  /* Estilos para alinear los botones y cuadro de búsqueda*/
+  .btn-group,
+  .btn-group-vertical {
+    position: absolute !important;
+  }
+
+  /* Estilos para la paginación de la tabla*/
+  .page-item.active .page-link {
+    background-color: #e48200 !important;
+    border-color: #e48200 !important;
+    color: white !important;
+  }
+
+  .page-link {
+    color: black !important;
+  }
+
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: none;
+    color: black !important;
+    border-radius: 4px;
+    border: 1px solid #828282;
+  }
+
+  .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    background: none;
+    color: black !important;
+  }
+</style>
+
+<div class="container"><br>
+  <h3 class="text-center mt-2">Mis pedidos</h3>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="alert alert-success" role="alert">
+    <strong>¡Gracias!</strong> {{ messages[0] }}
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <div class="col-lg-12 mt-4">
+    <div class="table-responsive">
+      <table id="tablePedidos" class="table table-bordered table-hover table-striped" cellspacing="0"
+      width="100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Arreglo Nombre</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for detallepedido, arreglo, pedidos, usuario in query %}
+          {% if pedidos.estatus == 1 %}
+          <tr>
+            <td>{{ pedidos.id }}</td>
+            <td>{{ arreglo.nombre }}</td>
+            <td>{{ pedidos.total }}</td>
+            <td>{{ pedidos.fechaPedido }}</td>
+            <td><a href="cancelar?id={{pedidos.id}}" class="btn btn-danger">Cancelar</a></td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table><br><br>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#tablePedidos').DataTable({
+      // Idioma en español
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+      },
+      // Uso de botones   
+      responsive: "true",
+      dom: 'Bfrtilp',
+      buttons: [
+        {
+          extend: 'excelHtml5',
+          text: '<i class="fas fa-file-excel"></i> ',
+          titleAttr: 'Exportar a Excel',
+          className: 'btn btn-success'
+        },
+        {
+          extend: 'pdfHtml5',
+          text: '<i class="fas fa-file-pdf"></i> ',
+          titleAttr: 'Exportar a PDF',
+          className: 'btn btn-danger'
+        },
+        {
+          extend: 'print',
+          text: '<i class="fa fa-print"></i> ',
+          titleAttr: 'Imprimir',
+          className: 'btn btn-secondary'
+        },
+      ]
+
+    });
+
+  });
+</script>
+
+{% endblock %}
