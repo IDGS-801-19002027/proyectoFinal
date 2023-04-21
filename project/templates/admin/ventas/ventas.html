@@ -1,0 +1,208 @@
+{% extends "main.html" %}
+
+{% block contents %}
+<style>
+    /* Estilos para la tabla */
+    table th {
+        background-color: #e48200 !important;
+        color: white;
+    }
+
+    table>tbody>tr>td {
+        vertical-align: middle !important;
+    }
+
+    /* Estilos para alinear los botones y cuadro de búsqueda*/
+    .btn-group,
+    .btn-group-vertical {
+        position: absolute !important;
+    }
+
+    /* Estilos para la paginación de la tabla*/
+    .page-item.active .page-link {
+        background-color: #e48200 !important;
+        border-color: #e48200 !important;
+        color: white !important;
+    }
+
+    .page-link {
+        color: black !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        color: black !important;
+        border-radius: 4px;
+        border: 1px solid #828282;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+        background: none;
+        color: black !important;
+    }
+</style>
+<div class="container"><br>
+    <h3 class="text-center mt-2">Lista de ventas</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!--<form action="/buscarVenta" method="post">
+        <input type="text" size="30px" name="filtro" placeholder="Buscar" aria-label="Buscar"
+            aria-describedby="button-addon2">
+        <button class="btn btn-outline-warning" type="submit">Buscar</button>
+    </form>-->
+    <a href="/insertarVenta" class="btn btn-success"><i class="fas fa-plus-circle"></i> Nueva venta</a>
+    <div class="col-lg-12 mt-4">
+        <div class="table-responsive">
+            <table id="tableVentas" class="table table-bordered table-hover table-striped text-center" cellspacing="0"
+                width="100%">
+                <thead>
+                    <tr>
+                        <th>Folio</th>
+                        <th>Fecha</th>
+                        <th>Arreglo</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Estatus</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for venta in ventas %}
+                    {% if venta.estatus == 1 %}
+                    <tr>
+                        <td>{{venta.id_venta}}</td>
+                        <td>{{ venta.fecha }}</td>
+                        <td>{{ venta.nombre}}</td>
+                        <td>{{ venta.cantidad}}</td>
+                        <td>${{ venta.total }} MXN</td>
+                        <td>{{ venta.estatus}}</td>
+                        <td>
+                            <a href="cancelarVenta?id={{venta.id_venta}}" class="btn btn-danger"><i
+                                    class="fas fa-ban"></i>
+                                Cancelar</a>
+                            <!--<a class=" btn btn-secondary" href="/generarTicket?idDetalle={{venta.id_venta}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: auto;" width="16"
+                                    height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                                    <path fill-="evenodd"
+                                        d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
+                                </svg>
+                            </a>-->
+                            <a href="finalizarVenta?id={{venta.id_venta}}" class="btn btn-success"><i
+                                    class="fas fa-arrow-right"></i>
+                                Finalizar</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="mt-4 text-center">
+                <button class="btn btn-secondary" onclick="crearCards();">Generar ticket</button>
+            </div>
+            <div class="mt-4" id="datosTabla">
+                <!-- Aquí se agregarán los datos de la tabla -->
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    // Función para crear los cards
+    function crearCards() {
+
+        const tabla = document.getElementById('tableVentas');
+        const divDatos = document.getElementById('datosTabla');
+
+        // Obtener los nombres de las columnas de la tabla (los th)
+        const columnas = [];
+        const ths = tabla.querySelectorAll('th');
+        for (let i = 0; i < ths.length - 2; i++) {
+            columnas.push(ths[i].textContent.trim());
+        }
+
+        // Obtener los datos de las celdas de la tabla (los td)
+        const filas = tabla.querySelectorAll('tbody tr');
+        const tdArray = [];
+        for (let i = 0; i < filas.length; i++) {
+            const celdas = filas[i].querySelectorAll('td');
+            const obj = {};
+            for (let j = 0; j < celdas.length; j++) {
+                obj[columnas[j]] = celdas[j].textContent.trim();
+            }
+            tdArray.push(obj);
+        }
+
+        // Recorrer el tdArray y crear un card por cada objeto
+        for (let i = 0; i < tdArray.length; i++) {
+            const obj = tdArray[i];
+            const card = document.createElement('div'); // Creamos un div que servirá como card
+            card.classList.add('card'); // Agregamos una clase para dar estilo al card
+
+            // Agregamos los datos del objeto al card
+            let cardHtml = '';
+            for (let j = 0; j < columnas.length; j++) {
+                const columna = columnas[j];
+                cardHtml += `
+    <div class="card-header">${columna}</div>
+    <div class="card-body">
+      <p class="card-text">${obj[columna]}</p>
+    </div>
+  `;
+            }
+            card.innerHTML = cardHtml;
+
+            // Agregamos el card al div donde se agregarán los datos
+            divDatos.appendChild(card);
+        }
+
+        print()
+
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableVentas').DataTable({
+            // Idioma en español
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            // Uso de botones   
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-secondary'
+                },
+            ]
+
+        });
+
+    });
+</script>
+
+{% endblock %}

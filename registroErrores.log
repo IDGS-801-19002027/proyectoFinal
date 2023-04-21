@@ -1,0 +1,6 @@
+2023-04-20 18:31:40,319 - ERROR - Intento de registro con correo ya existente. Correo: gerson@gmail.com
+2023-04-20 18:31:51,577 - WARNING - Intento de logueo con datos incorrectos con el correo gerson@gmail.com
+2023-04-20 18:32:13,347 - ERROR - Intento de registro con correo ya existente. Correo: gerson@gmail.com
+2023-04-20 18:32:13,347 - ERROR - Intento de registro con correo ya existente. Correo: gerson@gmail.com
+2023-04-20 18:33:07,994 - INFO - Se registró un nuevo cliente. Nombre: Gerson Torres, Correo: torresg@gmail.com
+2023-04-20 18:33:07,994 - INFO - Se registró un nuevo cliente. Nombre: Gerson Torres, Correo: torresg@gmail.com
