@@ -1,10 +1,11 @@
 {% extends "main.html" %}
 {% block contents%}
+<div class="content">
 <br>
 <div class="row">
     <div class="col-2">
         <div class="gallery">
-            <h1>Agregar usuario</h1>
+            <h1>Actualizar usuario</h1>
             <a href="/usuarios" class="btn btn-success text-white" 
             style="background:#d27300;
             width:200px;
@@ -14,21 +15,22 @@
             text-decoration:none;
             border:none;"> Cancelar/Regresar</a>
         </div>
-    </div>
+    </div> 
     <div class="col-10">
-        <form method="POST" action="/agregar-usuario">
+        <form method="POST" action="/modificar-usuario">
+            <input type="text" name="idUsuario" value="{{usuario.id}}" hidden>
             <div class="">
                 <div class="form-group ">
-                  <input type="text" class="form-control" placeholder="Nombre" name="name" required>
+                  <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="{{usuario.nombre}}" required>
                 </div><br><br>
                 <div class="form-group ">
-                    <input type="text" class="form-control" placeholder="Apellidos" name="lastName" required>
+                    <input type="text" class="form-control" placeholder="Apellidos" name="apellidos" value="{{usuario.apellidos}}" required>
                 </div><br><br>
                 <div class="form-group ">
-                    <input type="email" class="form-control" placeholder="Correo" name="email" required>
+                    <input type="email" class="form-control" placeholder="Correo" name="email" value="{{usuario.email}}" required>
                 </div><br><br>
                 <div class="form-group ">
-                  <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                  <input type="password" class="form-control" placeholder="Contraseña" name="password" value="{{usuario.password}}" required>
                 </div><br><br>
                 <div class="form-group ">
                     <label for="rol" class="h6">Rol del usuario </label>
@@ -44,10 +46,15 @@
                 height:40px;
                 color:#fff;
                 text-decoration:none;
-                border:none;">Registrar usuario</button>
+                border:none;">Guardar Cambios</button>
             </center>
             </div>
           </form>
     </div>
+</div>
+
+<script>
+    document.getElementById('rol').value="{{usuario.roles[0].id}}";
+</script>
 </div>
 {%endblock%}

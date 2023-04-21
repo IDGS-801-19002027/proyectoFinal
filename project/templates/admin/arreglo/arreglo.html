@@ -1,0 +1,160 @@
+{% extends "main.html" %}
+
+{% block contents %}
+
+{% from "_macros.html" import render_field %}
+<style>
+    /* Estilos para la tabla */
+    table th {
+        background-color: #e48200 !important;
+        color: white;
+    }
+
+    table>tbody>tr>td {
+        vertical-align: middle !important;
+    }
+
+    /* Estilos para alinear los botones y cuadro de búsqueda*/
+    .btn-group,
+    .btn-group-vertical {
+        position: absolute !important;
+    }
+
+    /* Estilos para la paginación de la tabla*/
+    .page-item.active .page-link {
+        background-color: #e48200 !important;
+        border-color: #e48200 !important;
+        color: white !important;
+    }
+
+    .page-link {
+        color: black !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        color: black !important;
+        border-radius: 4px;
+        border: 1px solid #828282;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+        background: none;
+        color: black !important;
+    }
+</style>
+<div class="container"><br>
+    <h3 class="text-center mt-2">Añadir Arreglo</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="/addArreglo" class="row mt-2">
+        <input class="form-control" type="hidden" name="id" value="0">
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.nombre, class="form-control") }}
+        </div>
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.rutaFoto, class="form-select") }}
+        </div>
+
+        <div class="col-sm-6 mt-2 text-center">
+            {{ render_field(form.descripcion, class="form-control") }}
+        </div>
+
+        <div class="col-sm-6 text-center mt-2">
+            {{ render_field(form.precioVenta, class="form-control") }}
+            <button class="btn btn-success form-control mt-2"><i class="fas fa-check"></i> Guardar</button>
+
+        </div>
+    </form>
+
+
+    <div class="col-lg-12 mt-4">
+        <div class="table-responsive">
+            <table id="tableArreglos" class="table table-bordered table-hover table-striped text-center" cellspacing="0"
+                width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Arreglo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for arreglo in arreglos %}
+                    {% if arreglo.estatus == 1 %}
+                    <tr>
+                        <td>{{ arreglo.id }}</td>
+                        <td>{{ arreglo.nombre }}</td>
+                        <td>{{ arreglo.descripcion }}</td>
+                        <td>${{ arreglo.precioVenta }}.00</td>
+                        <td>
+                            <button class="btn btn-secondary form-control"><a
+                                        href="/updateArregloSeleccionado/{{arreglo.id}}"
+                                        style="text-decoration: none; color: white;"><i class="fas fa-pen"></i>
+                                        Editar</a></button>
+                            <button class="btn btn-danger mt-1 form-control"><a href="/deleteArreglo/{{arreglo.id}}"
+                                    style="text-decoration: none; color: white;"><i class="fas fa-trash"></i>
+                                    Eliminar</a></button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-secondary"><a href="/elaboracion" style="text-decoration: none; color: white;"><i
+                    class="fas fa-plus-square"></i> Agregar
+                materiales al arreglo</a></button>
+    </div><br>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableArreglos').DataTable({
+            // Idioma en español
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            // Uso de botones   
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-secondary'
+                },
+            ]
+
+        });
+
+    });
+</script>
+
+{% endblock %}

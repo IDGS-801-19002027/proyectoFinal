@@ -1,6 +1,6 @@
 {% extends "main.html" %}
-
 {% block contents%}
+<div class="content">
 <br>
 <form name="sent" action="/reactivar-usuario?id={{usuario.id}}" method="POST">
 <div class="row">
@@ -47,4 +47,5 @@
     </div>
 </div>
 </form>
+</div>
 {% endblock %}

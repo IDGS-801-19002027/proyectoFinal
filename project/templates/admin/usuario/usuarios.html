@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% block contents%}
+<div class="content">
+    <br>
+        <div class="col-sm-6 text-center">
+            <div class="gallery">
+                <h1>Usuarios registrados</h1>
+                <a href="/agregar-usuario" class="btn btn-success text-white"
+                    style="background:darkorange; width:50%; font-size:16px; height:40px; color:#fff; text-decoration:none; border:none;"><i
+                        class="fas fa-plus"></i> Agregar nuevo usuario</a>
+                <form method="POST" action="/usuarios" class="text-center mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2"> 
+                        <select name="estatus" style="width:50%; font-size:16px; height:40px;">
+                            <option value="1">Ver usuarios activos</option>
+                            <option value="0">Ver usuarios inactivos</option>
+                        </select>
+                        <button type="submit" class="btn text-white" style="background:#c06500;
+                        width:50%; font-size:16px; height:40px; text-decoration:none; border:none;">Cambiar vista <i
+                                class="fas fa-arrow-circle-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row" id="usuarios">
+            {% for usuario in usuarios %}
+            {% if not usuario.roles[0].name == 'Cliente'%}
+                <div class="card" style="width: 13rem;">
+                    <img src="../static/img/usuario.png" class="card-img-top" width="300" alt="icono-usuario">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase"><b>{{usuario.nombre}} {{usuario.apellidos}}</b></h5>
+                        <h6 class='card-text'><b>Rol</b></h6>
+                        <p class='card-text'>{{usuario.roles[0].name}}</p><br>
+                        <h6 class='card-text'><b>Correo / Nombre de usuario</b></h6>
+                        <p class='card-text'>{{usuario.email}}</p><br>
+                        {% if usuario.estatus==1%}
+                        <a href="modificar-usuario?id={{usuario.id}} " class="btn btn-warning">
+                           <i class="fas fa-pen"></i> Modificar
+                        </a>
+                        <a href="eliminar-usuario?id={{usuario.id}} " class="btn btn-danger" style="font-size:16px;
+                    height:40px;
+                    color:#fff;
+                    text-decoration:none;
+                    border:none;">
+                           <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                        {% else%}
+                        <a href="reactivar-usuario?id={{usuario.id}} " class="btn btn-danger" style="background: #d27300; width:20%;
+                    font-size:16px;
+                    height:40px;
+                    color:#fff;
+                    text-decoration:none;
+                    border:none;">
+                            Reactivar
+                        </a>
+                        {%endif%}
+                    </div>
+                </div>
+            {%endif%}
+            {%endfor%}
+        </div>
+    
+</div>
+{%endblock%}

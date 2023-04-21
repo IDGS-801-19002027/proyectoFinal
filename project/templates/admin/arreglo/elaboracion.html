@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+
+{% block contents %}
+<style>
+    /* Estilos para la tabla */
+    table th {
+        background-color: #e48200 !important;
+        color: white;
+    }
+
+    table>tbody>tr>td {
+        vertical-align: middle !important;
+    }
+</style>
+<div class="container"><br>
+    {% from "_macros.html" import render_field %}
+    <h3 class="text-center mt-2 mb-2">Elaboración de arreglos</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h3 class="text-center">Seleccione las materias primas para el arreglo</h3>
+    <form method="POST" action="/addElabArreglo" class="row mt-2">
+        <input class="form-control" type="hidden" name="id_arreglo" value="{{arreglo.id}}">
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.materia, class="form-control", id="nombre_materia") }}
+        </div>
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.cantidad, class="form-control", id="cantidad_materia") }}
+        </div>
+
+        <div class="col-sm-6">
+            <button class="btn btn-secondary form-control mt-2"><i class="fas fa-plus-circle"></i> Agregar</button>
+        </div>
+
+        <div class="col-sm-6">
+            <button class="btn btn-success form-control mt-2">
+                <a href="/finishElabArreglo/{{arreglo.id}}" style="text-decoration: none; color: white;">
+                    <i class="fas fa-check-circle"></i> Finalizar Elaboración
+                </a>
+            </button>
+        </div>
+    </form>
+
+    <div class="col-lg-12 mt-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre del Arreglo</th>
+                        <th scope="col">Materia</th>
+                        <th scope="col">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in detArreglo %}
+                    <tr>
+                        <td>{{ detail.id_arreglo }}</td>
+                        <td>{{ arreglo.nombre }}</td>
+                        {% for materia in materias %}
+                            {% if materia.id == detail.id_materia_prima %}
+                                <td>{{ materia.nombre }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ detail.cantidad }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

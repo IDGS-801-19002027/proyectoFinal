@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+
+{% block contents %}
+{% from "_macros.html" import render_field %}
+
+<div class="container"><br>
+    <h3 class="text-center mt-2 mb-2">Modificar Arreglo</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="/updateArreglo" class="row mt-2">
+        <input class="form-control" type="hidden" name="id" value="{{arreglo.id}}">
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.nombre, class="form-control") }}
+        </div>
+
+        <div class="col-sm-6 text-center">
+            {{ render_field(form.rutaFoto, class="form-select") }}
+        </div>
+
+        <div class="col-sm-6 text-center mt-2">
+            {{ render_field(form.descripcion, class="form-control") }}
+        </div>
+
+        <div class="col-sm-6 text-center mt-2">
+            {{ render_field(form.precioVenta, class="form-control") }}
+            <div class="col-sm-12 btn-group">
+                <button class="btn btn-success mt-2 form-control"><i class="fas fa-check-circle"></i> Modificar</button>
+                <button class="btn btn-danger mt-2 form-control" type="button">
+                    <a href="/listArreglo" style="text-decoration: none; color: white;">
+                        <i class="fas fa-ban"></i> Cancelar
+                    </a>
+                </button>
+            </div>
+        </div>
+    </form>
+    <br>
+</div>
+{% endblock %}

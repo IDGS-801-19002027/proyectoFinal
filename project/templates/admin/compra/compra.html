@@ -1,0 +1,226 @@
+{% extends "main.html" %}
+
+{% block contents %}
+{% from "_macros.html" import render_field %}
+
+<style>
+    /* Estilos para la tabla */
+    table th {
+        background-color: #e48200 !important;
+        color: white;
+    }
+
+    table>tbody>tr>td {
+        vertical-align: middle !important;
+    }
+
+    /* Estilos para alinear los botones y cuadro de búsqueda*/
+    .btn-group,
+    .btn-group-vertical {
+        position: absolute !important;
+    }
+
+    /* Estilos para la paginación de la tabla*/
+    .page-item.active .page-link {
+        background-color: #e48200 !important;
+        border-color: #e48200 !important;
+        color: white !important;
+    }
+
+    .page-link {
+        color: black !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        color: black !important;
+        border-radius: 4px;
+        border: 1px solid #828282;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+        background: none;
+        color: black !important;
+    }
+</style>
+<div class="container"><br>
+    <h3 class="text-center mt-2">Realizar compra</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/addCompra" class="row mt-2">
+        <input class="form-control" type="hidden" name="id" value="0">
+        <div class="col-sm-4">
+            {{ render_field(form.proveedor, class="form-select") }}
+        </div>
+
+        <div class="col-sm-8 text-center">
+            <table class="table table-bordered table-hover table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>Materia prima</th>
+                        <th>Cantidad</th>
+                        <th>Costo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="detalles_compra">
+                    <tr>
+                        <td class="col-6">
+                            <select name="materia[]" class="form-select" id="materias-primas">
+                                {% for materia in materias %}
+                                    <option value="{{ materia[1] }}">{{ materia[1] }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td class="col-3"><input id="cantidad" type="number" name="cantidad[]" class="form-control" min="1" max="1000" value="1" pattern="[0-9]+"></td>
+                        <td class="col-3"><input id="costo" type="number" name="costo[]" class="form-control" min="1" max="2000" value="1" pattern="[0-9]+"></td>
+                        <td><button type="button" class="btn btn-danger eliminar-fila"><i
+                                    class="fas fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-secondary" id="agregar-fila"><i class="fas fa-plus"></i> Agregar otra
+                materia prima</button>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 mt-4">
+            <button class="btn btn-success form-control mt-2 text-center"><i class="fas fa-check"></i> Finalizar
+                compra</button>
+        </div>
+    </form>
+
+    <div class="col-lg-12 mt-4">
+        <div class="table-responsive">
+            <table id="tableCompras" class="table table-bordered table-hover table-striped" cellspacing="0"
+                width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Compra</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Fecha de compra</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for compra, nombre_usuario, nombre_proveedor in compras %}
+                    {% if compra.estatus == 1 %}
+                    <tr>
+                        <td>{{ compra.idCompra }}</td>
+                        <td>{{ nombre_usuario }}</td>
+                        <td>{{ nombre_proveedor }}</td>
+                        <td>{{ compra.fecha }}</td>
+                        <td>
+                            <button class="btn btn-danger"><a href="/cancelCompra/{{compra.idCompra}}"
+                                    style="text-decoration: none; color: white;"><i class="fas fa-trash"></i>
+                                    Cancelar</a></button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h3 class="text-center mt-2">Detalle de compras</h3>
+            <table class="table table-striped table-hover rounded mt-2">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Id Compra</th>
+                        <th scope="col">Materia</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detCompra, nombre_materia in detCompras %}
+                    <tr>
+                        <td>{{ detCompra.idCompra }}</td>
+                        <td>{{ nombre_materia }}</td>
+                        <td>${{ detCompra.costo/detCompra.cantidad }} MXN</td>
+                        <td>{{ detCompra.cantidad }}</td>
+                        <td>${{ detCompra.costo }} MXN</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    var input_value = document.getElementById("cantidad");
+  
+    input_value.addEventListener("input", function() {
+      if (input_value.value < 0) {
+        input_value.value = 1;
+      }
+    });
+
+    var input = document.getElementById("costo");
+  
+    input.addEventListener("input", function() {
+      if (input.value < 0) {
+        input.value = 1;
+      }
+    });
+  </script>
+<script>
+    $(document).ready(function () {
+        $('#tableCompras').DataTable({
+            // Idioma en español
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            // Uso de botones   
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-secondary'
+                },
+            ]
+
+        });
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Agregar una nueva fila al presionar el botón "Agregar materia prima"
+        $("#agregar-fila").click(function () {
+            var nuevaFila = '<tr><td><select name="materia[]" class="form-select">{% for materia in materias %}<option value="{{ materia[1] }}">{{ materia[1] }}</option>{% endfor %}</select></td><td><input id="cantidad" type="number" name="cantidad[]" class="form-control" value="1"></td><td><input id="costo" type="number" name="costo[]" class="form-control" value="1"></td><td><button type="button" class="btn btn-danger eliminar-fila"><i class="fas fa-trash"></i></button></td></tr>';
+            $("#detalles_compra").append(nuevaFila);
+        });
+
+        // Eliminar la fila al presionar el botón "Eliminar"
+        $(document).on("click", ".eliminar-fila", function () {
+            $(this).closest("tr").remove();
+        });
+    });
+</script>
+{% endblock %}

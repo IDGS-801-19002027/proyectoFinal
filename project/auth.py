@@ -14,6 +14,8 @@ from . models import User, Role
 #Importamos el objeto de la BD y userDataStore desde __init__
 from . import db, userDataStore
 
+from . import main
+ 
 #Creamos el BluePrint y establecemos que todas estas rutas deben estar dentro de /security para sobre escribir 
 # las vistas por omisión de flask-security.
 # Por lo que ahora las rutas deberán ser /security/login y security/register
@@ -28,17 +30,25 @@ def login():
         print(email, password)
         remember = True if request.form.get('remember') else False
 
-        # Verifica si hay un usuario creado con el email
+        # Verifica si hay un usuario creado con el mismo correo
         user  = User.query.filter_by(email=email).first()
 
-        # Verifica si el usuario existe
-        if not user :
-            flash('El usuario y/o contraseña son incorrectos')
-            print("Datos no correctos de acceso")
+        # Tomamos el password proporcionado por el usuario, lo hasheamos y lo comparamos con el  password
+        if not user or not check_password_hash(user.password, password) :
+            flash('El usuario y/o contraseña son incorrectos.')
+            print("Datos de acceso no correctos.")
+            main.registrarLogs("Intento de logueo con datos incorrectos con el correo "+email, 'warn', 'bitacora')
             return redirect(url_for('auth.login'))
+        
+        # Verificar estatus
+        if(user.estatus == 0):
+            flash("El usuario esta inhabilitado, ingrese con otro usuario.")
+            main.registrarLogs("Intento de logueo con usuario inactivo", 'warn', 'bitacora')
+            return redirect(url_for("auth.login"))
 
-        # Se autentica a el usuario
+        # Si llegamos aquí, el usuario tiene datos correctos, creamos una sesion y logueamos al usuario
         login_user(user, remember=remember)
+        main.registrarLogs('Inicio sesion el usuario '+user.nombre, 'info', 'bitacora')
         return render_template('index.html')
     
     return render_template('login.html')
@@ -56,7 +66,8 @@ def register():
         user = User.query.filter_by(email=email).first()
 
         if user: #Si se encontró un usuario, redireccionamos de regreso a la página de registro
-            flash('El correo electrónico ya existe')
+            flash('El correo electrónico ya existe.')
+            main.registrarLogs("Intento de registro con correo ya existente. Correo: "+email, 'error', 'error')
             return redirect(url_for('auth.register'))
 
         #Creamos un nuevo usuario con los datos del formulario.
@@ -82,7 +93,8 @@ def register():
         userDataStore.add_role_to_user(RecentUser, rolN)
         db.session.commit()
         print("Usuario con rol registrado")
-        flash("Te haz registrado, inicia sesión")
+        main.registrarLogs('Se registró un nuevo cliente. Nombre: '+str(new_user.nombre)+' '+str(new_user.apellidos)+', Correo: '+str(new_user.email), 'info', 'bitacora')
+        flash("Te has registrado con éxito, inicia sesión.")
 
         return redirect(url_for('auth.login'))
     return render_template('register.html')
@@ -90,6 +102,7 @@ def register():
 @auth.route('/logout')
 @login_required
 def logout():
+    main.registrarLogs('Sesión finalizada por el usuario '+current_user.nombre, 'info', 'bitacora')
     #Cerramos la sessión
     logout_user()
     return redirect(url_for('main.inicio'))
