@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+
+{% block contents %}
+{% from "_macros.html" import render_field %}
+
+<div class="container"><br>
+    <h3 class="text-center">Modificar Materia Prima</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="text-success">>{{ message }}</h3>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="/updateMateriaPrima" class="row mt-2">
+        <input class="form-control" type="hidden" name="id" value="{{materia.id}}">
+
+        <div class="col-sm-4">
+            {{ render_field(form.nombre, class="form-control") }}
+        </div>
+
+        <div class="col-sm-4">
+            {{ render_field(form.unidad, class="form-control") }}
+        </div>
+
+        <div class="col-sm-4">
+            {{ render_field(form.cantidad, class="form-control") }}
+        </div>
+
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <button class="btn btn-success mt-2 form-control"><i class="fas fa-check"></i> Guardar</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-danger mt-2 form-control" type="button">
+                <a href="/listMateria" style="text-decoration: none; color: white;">
+                    <i class="fas fa-ban"></i> Cancelar
+                </a>
+            </button>
+        </div>
+        <div class="col-sm-4"></div>
+    </form>
+</div>
+<br><br>
+{% endblock %}

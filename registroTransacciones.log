@@ -1,0 +1,207 @@
+2023-04-20 17:25:13,568 - INFO - El usuario Gerson ha cancelado la venta con ID: 2
+2023-04-20 18:43:42,317 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE GIRASOL
+2023-04-20 18:43:51,662 - INFO - El usuario Gerson registró una nueva materia prima LISTÓN ROJO
+2023-04-20 18:43:51,662 - INFO - El usuario Gerson registró una nueva materia prima LISTÓN ROJO
+2023-04-20 18:44:02,385 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE BUGAMBILIA
+2023-04-20 18:44:02,385 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE BUGAMBILIA
+2023-04-20 18:44:02,385 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE BUGAMBILIA
+2023-04-20 18:44:11,616 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE HORTENSIA
+2023-04-20 18:44:11,616 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE HORTENSIA
+2023-04-20 18:44:11,616 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE HORTENSIA
+2023-04-20 18:44:11,616 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE HORTENSIA
+2023-04-20 18:44:22,365 - INFO - El usuario Gerson registró una nueva materia prima RECIPIENTE DE VIDRIO 20X10
+2023-04-20 18:44:22,365 - INFO - El usuario Gerson registró una nueva materia prima RECIPIENTE DE VIDRIO 20X10
+2023-04-20 18:44:22,365 - INFO - El usuario Gerson registró una nueva materia prima RECIPIENTE DE VIDRIO 20X10
+2023-04-20 18:44:22,365 - INFO - El usuario Gerson registró una nueva materia prima RECIPIENTE DE VIDRIO 20X10
+2023-04-20 18:44:22,365 - INFO - El usuario Gerson registró una nueva materia prima RECIPIENTE DE VIDRIO 20X10
+2023-04-20 18:45:35,002 - INFO - El usuario Gerson registró un nuevo arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-20 18:45:35,002 - INFO - El usuario Gerson registró un nuevo arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-20 18:45:35,002 - INFO - El usuario Gerson registró un nuevo arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-20 18:45:35,002 - INFO - El usuario Gerson registró un nuevo arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-20 18:45:35,002 - INFO - El usuario Gerson registró un nuevo arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-20 18:46:00,831 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 18:46:00,831 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 18:46:00,831 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 18:46:00,831 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 18:46:00,831 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 18:46:18,452 - INFO - Se registró un nuevo cliente. Nombre: Mariana Ayala, Correo: mariana.ayala@gmail.com
+2023-04-20 18:46:18,452 - INFO - Se registró un nuevo cliente. Nombre: Mariana Ayala, Correo: mariana.ayala@gmail.com
+2023-04-20 18:46:18,452 - INFO - Se registró un nuevo cliente. Nombre: Mariana Ayala, Correo: mariana.ayala@gmail.com
+2023-04-20 18:46:18,452 - INFO - Se registró un nuevo cliente. Nombre: Mariana Ayala, Correo: mariana.ayala@gmail.com
+2023-04-20 18:46:18,452 - INFO - Se registró un nuevo cliente. Nombre: Mariana Ayala, Correo: mariana.ayala@gmail.com
+2023-04-20 18:46:26,948 - INFO - Inicio sesion el usuario Mariana
+2023-04-20 18:46:26,948 - INFO - Inicio sesion el usuario Mariana
+2023-04-20 18:46:26,948 - INFO - Inicio sesion el usuario Mariana
+2023-04-20 18:46:26,948 - INFO - Inicio sesion el usuario Mariana
+2023-04-20 18:46:26,948 - INFO - Inicio sesion el usuario Mariana
+2023-04-20 19:48:12,788 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:48:38,662 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:48:38,662 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:15,363 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:15,363 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:15,363 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:21,812 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:21,812 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:21,812 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 19:50:21,812 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:01:52,244 - INFO - El usuario Gerson ha cancelado el pedido con ID: 6
+2023-04-20 23:01:54,696 - INFO - El usuario Gerson ha cancelado el pedido con ID: 10
+2023-04-20 23:01:54,696 - INFO - El usuario Gerson ha cancelado el pedido con ID: 10
+2023-04-20 23:01:57,091 - INFO - El usuario Gerson ha cancelado el pedido con ID: 11
+2023-04-20 23:01:57,091 - INFO - El usuario Gerson ha cancelado el pedido con ID: 11
+2023-04-20 23:01:57,091 - INFO - El usuario Gerson ha cancelado el pedido con ID: 11
+2023-04-20 23:02:29,982 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:02:29,982 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:02:29,982 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:02:35,714 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:02:35,714 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:02:35,714 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:03:04,343 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:03:04,343 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:03:04,343 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:05:42,874 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:05:42,874 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:05:42,874 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:06:44,564 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:06:44,564 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:06:44,564 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:07:16,660 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:07:16,660 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:07:16,660 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:09:52,257 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:09:52,257 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:09:52,257 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:11:51,969 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:11:51,969 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:11:51,969 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:12:13,801 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:12:13,801 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:12:13,801 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:17:22,585 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:17:22,585 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:17:22,585 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-20 23:23:00,802 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-20 23:23:30,680 - INFO - El usuario Marlene ha cancelado el pedido con ID: 27
+2023-04-20 23:23:30,680 - INFO - El usuario Marlene ha cancelado el pedido con ID: 27
+2023-04-20 23:24:38,378 - INFO - Sesión finalizada por el usuario Marlene
+2023-04-20 23:24:38,378 - INFO - Sesión finalizada por el usuario Marlene
+2023-04-20 23:24:45,104 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:24:45,104 - INFO - Inicio sesion el usuario Gerson
+2023-04-20 23:25:08,878 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:25:08,878 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-20 23:25:37,914 - INFO - Ha sido eliminado el proveedor con ID :2 por: Gerson
+2023-04-20 23:25:37,914 - INFO - Ha sido eliminado el proveedor con ID :2 por: Gerson
+2023-04-20 23:27:03,596 - INFO - El usuario Gerson registró una nueva compra al proveedor FLORES JULIO ORTEGA
+2023-04-20 23:27:03,596 - INFO - El usuario Gerson registró una nueva compra al proveedor FLORES JULIO ORTEGA
+2023-04-20 23:27:03,596 - INFO - El usuario Gerson registró una nueva compra al proveedor FLORES JULIO ORTEGA
+2023-04-20 23:28:44,348 - INFO - El usuario Gerson canceló una compra con ID: 1
+2023-04-20 23:28:44,348 - INFO - El usuario Gerson canceló una compra con ID: 1
+2023-04-20 23:28:44,348 - INFO - El usuario Gerson canceló una compra con ID: 1
+2023-04-20 23:28:44,348 - INFO - El usuario Gerson canceló una compra con ID: 1
+2023-04-20 23:32:04,216 - INFO - El usuario Gerson registró una nueva materia prima TULIPANES
+2023-04-20 23:32:04,216 - INFO - El usuario Gerson registró una nueva materia prima TULIPANES
+2023-04-20 23:32:04,216 - INFO - El usuario Gerson registró una nueva materia prima TULIPANES
+2023-04-20 23:32:04,216 - INFO - El usuario Gerson registró una nueva materia prima TULIPANES
+2023-04-20 23:32:04,216 - INFO - El usuario Gerson registró una nueva materia prima TULIPANES
+2023-04-20 23:32:41,331 - INFO - El usuario Gerson registró un nuevo arreglo RAMO DE TULIPANES
+2023-04-20 23:32:41,331 - INFO - El usuario Gerson registró un nuevo arreglo RAMO DE TULIPANES
+2023-04-20 23:32:41,331 - INFO - El usuario Gerson registró un nuevo arreglo RAMO DE TULIPANES
+2023-04-20 23:32:41,331 - INFO - El usuario Gerson registró un nuevo arreglo RAMO DE TULIPANES
+2023-04-20 23:32:41,331 - INFO - El usuario Gerson registró un nuevo arreglo RAMO DE TULIPANES
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:38:48,767 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:40:13,017 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-20 23:46:55,165 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:10:16,359 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:10:19,520 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:10:19,520 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:12:32,067 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:12:36,464 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:12:36,464 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:14:04,355 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:14:10,878 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 00:14:10,878 - INFO - El usuario Gerson ha realizado la venta con ID: <built-in function id>
+2023-04-21 09:14:06,637 - INFO - El usuario Gerson registró una nueva materia prima ROSAS ROJAS
+2023-04-21 09:19:30,450 - INFO - El usuario Gerson registró una nueva materia prima LISTÓN DORADO
+2023-04-21 09:19:49,399 - INFO - El usuario Gerson modificó la materia prima LISTÓN DORADO
+2023-04-21 09:20:17,207 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE PRUEBA
+2023-04-21 09:20:17,207 - INFO - El usuario Gerson registró una nueva materia prima FLOR DE PRUEBA
+2023-04-21 09:20:20,317 - INFO - El usuario Gerson eliminó la materia prima con ID: 10
+2023-04-21 09:20:20,317 - INFO - El usuario Gerson eliminó la materia prima con ID: 10
+2023-04-21 09:20:20,317 - INFO - El usuario Gerson eliminó la materia prima con ID: 10
+2023-04-21 09:31:56,708 - INFO - El usuario Gerson registró una nueva compra al proveedor FLORES JULIO ORTEGA
+2023-04-21 09:32:38,546 - INFO - El usuario Gerson canceló una compra con ID: 2
+2023-04-21 09:32:38,546 - INFO - El usuario Gerson canceló una compra con ID: 2
+2023-04-21 11:19:24,630 - INFO - El usuario Gerson registro a un Empleado con los datos:                            Nombre: Prueba Prueba, Correo = prueba@gmail.com
+2023-04-21 11:19:24,646 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:19:52,630 - INFO - El usuario Gerson visualizo el menú para eliminar lógicamente un usuario
+2023-04-21 11:19:54,956 - INFO - El usuario Gerson visualizo el menú para eliminar lógicamente un usuario
+2023-04-21 11:19:54,973 - INFO - El usuario Gerson eliminó logicamente al usuario con el                            nombre: Prueba Prueba, Correo: prueba@gmail.com
+2023-04-21 11:19:54,973 - INFO - El usuario Gerson eliminó logicamente al usuario con el                            nombre: Prueba Prueba, Correo: prueba@gmail.com
+2023-04-21 11:19:54,990 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:19:54,990 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:21:04,936 - WARNING - Intento de logueo con datos incorrectos con el correo gerson@gmail.com
+2023-04-21 11:21:04,936 - WARNING - Intento de logueo con datos incorrectos con el correo gerson@gmail.com
+2023-04-21 11:27:39,620 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 11:27:39,620 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 11:38:46,952 - INFO - El usuario Gerson registro a un Empleado con los datos:                            Nombre: Juan Camaney, Correo = juanito@gmail.com
+2023-04-21 11:38:46,967 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:38:55,200 - INFO - El usuario Gerson visualizo el formulario para modificar un usuario
+2023-04-21 11:38:56,859 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:40:37,916 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:41:37,168 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:41:43,265 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:41:52,350 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:41:58,586 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:42:40,012 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:42:48,418 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:51:12,282 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:52:46,131 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:54:45,545 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:54:53,118 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:56:02,684 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:56:30,366 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:56:42,775 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 11:57:30,962 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:04:43,283 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:04:55,124 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:05:08,796 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:05:28,323 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:05:47,236 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:07:39,157 - INFO - Ingreso al módulo de usuarios. Usuario: Gerson
+2023-04-21 12:23:35,248 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 12:58:09,477 - INFO - Sesión finalizada por el usuario Marlene
+2023-04-21 12:58:14,784 - INFO - Inicio sesion el usuario Gerson
+2023-04-21 12:58:30,796 - INFO - El usuario Gerson actualizó el arreglo RAMO DE GIRASOL
+2023-04-21 12:58:36,726 - INFO - El usuario Gerson actualizó el arreglo RAMO DE TULIPANES
+2023-04-21 12:58:42,359 - INFO - El usuario Gerson actualizó el arreglo ARREGLO DE MESA PARA XV AÑOS
+2023-04-21 12:58:54,912 - INFO - El usuario Gerson actualizó el arreglo ARREGLO DE BANQUETE
+2023-04-21 12:58:57,989 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 13:05:42,719 - INFO - Inicio sesion el usuario Gerson
+2023-04-21 13:06:09,016 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 13:06:14,351 - INFO - Inicio sesion el usuario Marlene
+2023-04-21 13:06:29,599 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:06:29,599 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:06:36,676 - INFO - Sesión finalizada por el usuario Marlene
+2023-04-21 13:06:36,676 - INFO - Sesión finalizada por el usuario Marlene
+2023-04-21 13:06:45,003 - INFO - Inicio sesion el usuario Gerson
+2023-04-21 13:06:45,003 - INFO - Inicio sesion el usuario Gerson
+2023-04-21 13:08:29,789 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 13:08:29,789 - INFO - Sesión finalizada por el usuario Gerson
+2023-04-21 13:08:48,266 - INFO - Inicio sesion el usuario Marlene
+2023-04-21 13:08:48,266 - INFO - Inicio sesion el usuario Marlene
+2023-04-21 13:08:53,828 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:08:53,828 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:08:53,828 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:20:07,736 - INFO - El cliente Marlene ha solicitado un pedido con ID: <built-in function id>
+2023-04-21 13:21:41,005 - INFO - Sesión finalizada por el usuario Marlene

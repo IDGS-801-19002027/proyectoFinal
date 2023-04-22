@@ -1,0 +1,134 @@
+{% extends "main.html" %}
+
+{% block contents %}
+<style>
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        border-color: none !important;
+    }
+
+    #btn {
+        background-color: #be6e06;
+        color: white;
+        border-color: #ffe8cd;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 5px;
+        letter-spacing: 2px;
+        padding: 18px 30px;
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        transition: all 300ms ease 0ms;
+        box-shadow: 0px 8px 15px rgba(217, 216, 216, 0.1);
+        z-index: 99;
+    }
+
+    #btn:hover {
+        background-color: #ffe8cd;
+        color: rgb(37, 36, 36);
+        border-color: #282827;
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-7px);
+    }
+
+    #card-title {
+        background-color: #be6e06;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 1.5px;
+        letter-spacing: 2px;
+    }
+
+    #parrafo {
+        color: #585856 !important;
+        font-size: 16px !important;
+    }
+</style>
+
+<div class="container"><br>
+    <form action="" method="post">
+        <h3 class="text-center mt-2 mb-2">Nuestros arreglos</h3>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="row mt-2 align-items-stretch">
+            {% for arreglo in arreglos %}
+            {% if arreglo.estatus == 1 %}
+            <div class="col-4 mt-3">
+                <div class="card h-100 text-center">
+                    <h5 class="card-header text-white" id="card-title">{{ arreglo.nombre }}</h5>
+                    <div class="card-body">
+                        <input type="hidden" name="id[]" value="{{arreglo.id}}">
+                        {% if arreglo.rutaFoto == 'tipo1' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor5.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo2' %}
+                        <img class="card-img-top text-center" src="../../static/img/fondo.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo3' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor6.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo4' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor10.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo5' %}
+                        <img class="card-img-top text-center" src="../../static/img/arreglos/sunflower.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo6' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor7.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo7' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor2.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo8' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor3.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo9' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor8.jpg">
+                        <hr>
+                        {% endif %}
+
+                        {% if arreglo.rutaFoto == 'tipo10' %}
+                        <img class="card-img-top text-center" src="../../static/img/flor1.jpg">
+                        <hr>
+                        {% endif %}
+                        <p class="card-text text-center" id="parrafo"><b>Descripción:</b> {{arreglo.descripcion}}</p>
+                        <hr>
+                        <p class="card-text text-center" id="parrafo"><b>Precio:</b> ${{arreglo.precioVenta}}.00 MXN</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div><br>
+    </form>
+</div>
+{% endblock %}
