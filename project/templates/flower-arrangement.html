@@ -2,82 +2,82 @@
 {% block contents %}
 <div class="gallery">
     <h1>Nuestros arreglos</h1>
-<h3>Revisa nuestro catálogo de arreglos</h3>
+    <h3>Revisa nuestro catálogo de arreglos</h3>
 </div>
 <center>
-<div id="mi_div" class="row" style="width: max-content;">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <center>
-                    <div class="card">
-                        <img src="../static/img/flowers/tulips.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" style="background-color:seashell;">
-                            <h5 class="card-title text-uppercase"><b>Nombre del arreglo</b></h5>
-                            <p class="card-text">Descripción del arreglo.</p>
-                            <p class="card-text text-success">$ 0.00</p>
-                            <!--Habilitar boton solo para empleados y admin logueados-->
-                            {% if current_user.is_authenticated%}
-                            {%if current_user.roles[0].name == 'Empleado'
-                            or current_user.roles[0].name == 'Administrador' %}
-                            <a href="" class="btn btn-warning text-white">Modificar &updownarrow;</a>
-                            <a href="" class="btn btn-danger text-white">Eliminar </a>
-                            {% endif %}
-                            {% endif %}
-                            <!--Habilitar boton solo para clientes logueados-->
-                            {% if current_user.is_authenticated %}
-                            {% if current_user.roles[0].name == 'Cliente' %}
-                            <a href="" class="btn btn-success text-white">Agregar a pedido +</i> </a>
-                            {% endif %}
-                            {% endif %}
-                            {% if not current_user.is_authenticated %}
-                            <p class="h5 text-info">Inicia sesión para interactuar</p>
-                            {% endif %}
+    <div id="mi_div" class="row" style="width: max-content;">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <center>
+                        <div class="card">
+                            <img src="../static/img/flowers/tulips.jpg" class="card-img-top" alt="...">
+                            <div class="card-body" style="background-color:seashell;">
+                                <h5 class="card-title text-uppercase"><b>Nombre del arreglo</b></h5>
+                                <p class="card-text">Descripción del arreglo.</p>
+                                <p class="card-text text-success">$ 0.00</p>
+                                <!--Habilitar boton solo para empleados y admin logueados-->
+                                {% if current_user.is_authenticated%}
+                                {%if current_user.roles[0].name == 'Empleado'
+                                or current_user.roles[0].name == 'Administrador' %}
+                                <a href="" class="btn btn-warning text-white">Modificar &updownarrow;</a>
+                                <a href="" class="btn btn-danger text-white">Eliminar </a>
+                                {% endif %}
+                                {% endif %}
+                                <!--Habilitar boton solo para clientes logueados-->
+                                {% if current_user.is_authenticated %}
+                                {% if current_user.roles[0].name == 'Cliente' %}
+                                <a href="" class="btn btn-success text-white">Agregar a pedido +</i> </a>
+                                {% endif %}
+                                {% endif %}
+                                {% if not current_user.is_authenticated %}
+                                <p class="h5 text-info">Inicia sesión para interactuar</p>
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                </center>
-            </div>
-            
+                    </center>
+                </div>
 
-            <div class="carousel-item">
-                <center>
-                    <div class="card">
-                        <img src="../static/img/flowers/sunflower.jpg" class="card-img-top" alt="...">
-                        <div class="card-body" style="background-color:seashell;">
-                            <h5 class="card-title text-uppercase"><b>Nombre del arreglo</b></h5>
-                            <p class="card-text">Descripción del arreglo.</p>
-                            <p class="card-text text-success">$ 0.00</p>
-                            <!--Habilitar boton solo para empleados logueados-->
-                            {% if current_user.is_authenticated%}
-                            {%if current_user.roles[0].name == 'Empleado'
-                            or current_user.roles[0].name == 'Administrador' %}
-                            <a href="" class="btn btn-warning text-white">Modificar &updownarrow;</a>
-                            <a href="" class="btn btn-danger text-white">Eliminar </a>
-                            {% endif %}
-                            {% endif %}
-                            <!--Habilitar boton solo para clientes logueados-->
-                            {% if current_user.is_authenticated %}
-                            {% if current_user.roles[0].name == 'Cliente' %}
-                            <a href="" class="btn btn-success text-white">Agregar a pedido +</i> </a>
-                            {% endif %}
-                            {% endif %}
-                            {% if not current_user.is_authenticated %}
-                            <p class="h5 text-info">Inicia sesión para interactuar</p>
-                            {% endif %}
+
+                <div class="carousel-item">
+                    <center>
+                        <div class="card">
+                            <img src="../static/img/flowers/sunflower.jpg" class="card-img-top" alt="...">
+                            <div class="card-body" style="background-color:seashell;">
+                                <h5 class="card-title text-uppercase"><b>Nombre del arreglo</b></h5>
+                                <p class="card-text">Descripción del arreglo.</p>
+                                <p class="card-text text-success">$ 0.00</p>
+                                <!--Habilitar boton solo para empleados logueados-->
+                                {% if current_user.is_authenticated%}
+                                {%if current_user.roles[0].name == 'Empleado'
+                                or current_user.roles[0].name == 'Administrador' %}
+                                <a href="" class="btn btn-warning text-white">Modificar &updownarrow;</a>
+                                <a href="" class="btn btn-danger text-white">Eliminar </a>
+                                {% endif %}
+                                {% endif %}
+                                <!--Habilitar boton solo para clientes logueados-->
+                                {% if current_user.is_authenticated %}
+                                {% if current_user.roles[0].name == 'Cliente' %}
+                                <a href="" class="btn btn-success text-white">Agregar a pedido +</i> </a>
+                                {% endif %}
+                                {% endif %}
+                                {% if not current_user.is_authenticated %}
+                                <p class="h5 text-info">Inicia sesión para interactuar</p>
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                </center>
+                    </center>
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
     </div>
-</div>
 </center>
 {% endblock %}

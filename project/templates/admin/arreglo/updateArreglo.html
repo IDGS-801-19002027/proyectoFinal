@@ -41,6 +41,15 @@
             </div>
         </div>
     </form>
+    <img id="fotoSeleccionada" src="{{ url_for('static', filename='img/default.jpg') }}" width="" height="300" alt="foto-arreglo">
     <br>
 </div>
+<script>
+    var rutaFoto = document.getElementById("rutaFoto");
+    var fotoSeleccionada = document.getElementById("fotoSeleccionada");
+    rutaFoto.addEventListener("change", function() {
+        var seleccion = rutaFoto.options[rutaFoto.selectedIndex].value;
+        fotoSeleccionada.src = "{{ url_for('static', filename='img') }}/" + seleccion + ".jpg";
+    });
+</script>
 {% endblock %}

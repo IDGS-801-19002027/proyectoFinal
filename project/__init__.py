@@ -1,10 +1,12 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_security import SQLAlchemyUserDatastore, Security
 from flask_sqlalchemy import SQLAlchemy
-from .models import db, Role, User, MateriaPrima, Arreglo, DetalleArreglo, Ventas, DetalleVenta, Pedidos, DetallePedido
+from .models import db, Role, User, Proveedor, MateriaPrima, Arreglo, DetalleArreglo, Ventas, DetalleVenta, Pedidos, DetallePedido
 userDataStore = SQLAlchemyUserDatastore(db, User, Role)
+from . import main
+
 
 #Inicio de la aplicación
 def create_app():
@@ -15,7 +17,8 @@ def create_app():
     #Generamos la clave aleatoria de sesión Flask para crear una cookie con la inf. de la sesión
     app.config['SECRET_KEY'] = os.urandom(24)
     #Definimos la ruta a la BD: mysql://user:password@localhost/bd'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/casaflores'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://casaFlores:casaFlores.ana@localhost/casaflores'
+
     # We're using PBKDF2 with salt.
     app.config['SECURITY_PASSWORD_HASH'] = 'pbkdf2_sha512'
     #Semilla para el método de encriptado que utiliza flask-security
@@ -26,6 +29,10 @@ def create_app():
     @app.before_first_request
     def create_all():
         db.create_all()
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('404.html'), 404
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.index'
@@ -42,6 +49,9 @@ def create_app():
     # Registra el blueprint para las partes no auth de la aplicación (Parte publica)
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    
+    from .flowers.routes import flowers
+    app.register_blueprint(flowers)
 
     from .arreglos.routes import arreglos
     app.register_blueprint(arreglos)
@@ -49,8 +59,25 @@ def create_app():
     from .usuarios.routes import usuarios
     app.register_blueprint(usuarios)
 
+    from .materiaPrima.routes import materiaPrima
+    app.register_blueprint(materiaPrima)
+
+    from .proveedores.routes import proveedor
+    app.register_blueprint(proveedor)
+
+    from .compras.routes import compra
+    app.register_blueprint(compra)
+
+    from .ventas.routes import ventas
+    app.register_blueprint(ventas)
+
+    from .pedidos.routes import pedidos
+    app.register_blueprint(pedidos)
+
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
     security = Security(app, user_datastore)
+
+    main.registrarLogs("Se inició la aplicación",'info', 'bitacora')
 
     return app

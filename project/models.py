@@ -21,6 +21,7 @@ class User(db.Model,UserMixin):
                            secondary= users_roles,
                            backref= db.backref('users', lazy= 'dynamic')
                            )
+    detalle_pedido = db.relationship('DetallePedido', backref=db.backref('detalle_pedido'))
     #usuario_ventas = db.relationship('Ventas', backref=db.backref('user'))
     #usuario_pedidos = db.relationship('Pedidos', backref=db.backref('user'))
     def has_role(self, *args):
@@ -32,6 +33,15 @@ class Role (RoleMixin, db.Model):
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(50))
 
+class Proveedor (db.Model):
+    __tablename__ = 'proveedor'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(200))
+    telefono = db.Column(db.String(10))
+    representante = db.Column(db.String(100))
+    correo = db.Column(db.String(100))
+    estatus = db.Column(db.Integer)
+
 class MateriaPrima (db.Model):
     __tablename__ = 'materiaPrima'
     id = db.Column(db.Integer, primary_key=True)
@@ -41,12 +51,11 @@ class MateriaPrima (db.Model):
     estatus = db.Column(db.Integer)
     detalle_arreglos = db.relationship('DetalleArreglo', backref=db.backref('materia_prima', 
                                                                             lazy='select'))
-
 class Arreglo (db.Model):
     __tablename__ = 'arreglo'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100))
-    descripcion = db.Column(db.String(50))
+    descripcion = db.Column(db.String(300))
     precioVenta = db.Column(db.Integer)
     rutaFoto = db.Column(db.String(50))
     estatus = db.Column(db.Integer)
@@ -58,6 +67,28 @@ class DetalleArreglo (db.Model):
     cantidad = db.Column(db.Integer)
     id_arreglo = db.Column(db.Integer, db.ForeignKey('arreglo.id'))
     id_materia_prima = db.Column(db.Integer, db.ForeignKey('materiaPrima.id'))
+
+class Compra (db.Model):
+    __tablename__ = "compra"
+    idCompra = db.Column(db.Integer, primary_key=True)
+    idUsuario = db.Column(db.Integer, db.ForeignKey('usuario.id'))
+    idProveedor = db.Column(db.Integer, db.ForeignKey('proveedor.id'))
+    fecha = db.Column(db.Date)
+    estatus = db.Column(db.Integer)
+    
+    usuario = db.relationship('User')
+    proveedor = db.relationship('Proveedor')
+
+class DetalleCompra(db.Model):
+    __tablename__ = "detalleCompra"
+    idDetCompra = db.Column(db.Integer, primary_key=True)
+    idCompra = db.Column(db.Integer, db.ForeignKey('compra.idCompra'))
+    idMateria = db.Column(db.Integer, db.ForeignKey('materiaPrima.id'))
+    cantidad = db.Column(db.Float, nullable = False)
+    costo = db.Column(db.Float, nullable = False)
+    
+    compra = db.relationship('Compra')
+    materiaPrima = db.relationship('MateriaPrima')
 
 class Comentarios (db.Model):
     __tablename__ = 'comentarios'
@@ -98,3 +129,10 @@ class DetallePedido(db.Model):
     subtotal = db.Column(db.Double)
     id_arreglo = db.Column(db.Integer, db.ForeignKey('arreglo.id'))
     id_pedido = db.Column(db.Integer, db.ForeignKey('pedidos.id'))
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id'))
+
+class Bitacora(db.Model):
+    __tablename__ = 'bitacora'
+    id = db.Column(db.Integer, primary_key=True)
+    accion = db.Column(db.String(100))
+    descripcion = db.Column(db.String(300))

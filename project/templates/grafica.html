@@ -1,0 +1,100 @@
+{% extends "main.html" %}
+{% block contents %}
+<form action="/moduloGrafica" method="POST">
+<div class="row">
+    <div class="col-2">
+        <p>Filtrar por:</p><br>
+        <button type="submit" style="background:darkorange;
+                width:200px;
+                font-size:16px;
+                height:40px;
+                color:#fff;
+                text-decoration:none;
+                border:none;">Aplicar filtros</button>
+    </div>
+    <div class="col-2">
+        <p>Gráfica</p>
+        <select name="grafica" id="grafica" class="form-control">
+        <option value="1">Ventas</option>
+        <option value="2">Materia</option>
+        <option value="3">Compras</option>
+        <option value="4">Pedidos</option>
+        </select>
+    </div>
+    <div class="col-2">
+        <p>Arreglo</p>
+        <select id="arreglo" name="arreglo" class="form-control">
+            <option value="0">Ver todo</option>
+            {%for detV in detalleV%}
+                {%for arreglo in arreglos%}
+                    {%if detV.id_arreglo == arreglo.id%}
+                    <option value="{{arreglo.id}}">{{arreglo.nombre}}</option>
+                    {%endif%}
+                {%endfor%}
+            {%endfor%}
+        </select>
+    </div>
+    <div class="col-2">
+        <p>Materia Prima</p>
+        <select id="insumo" name="insumo" class="form-control">
+            <option value="0">Ver todo</option>
+            {%for insumo in insumos%}
+                <option value="{{insumo.id}}">{{insumo.nombre}}</option>
+            {%endfor%}
+        </select>
+    </div>
+</div>
+</form>
+<div class="content">
+    <div class="row">
+        
+            <img src="data:image/png;base64,{{ imagen }}" alt="grafica" width="500">
+        <!--<div class="col-6">-->
+            <!-- <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Promedio</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Número máximo de ventas</td>
+                        <td>$ 900</td>
+                    </tr>
+                    <tr>
+                        <td>Mejor mes con ventas</td>
+                        <td>Febrero</td>
+                    </tr>
+                    <tr>
+                        <td>Peor mes en ventas</td>
+                        <td>Septiembre</td>
+                    </tr>
+                    <tr>
+                        <td>Promedio total de ventas</td>
+                        <td> $ {{promedio}}</td>
+                    </tr>
+                </tbody>
+            </table> -->
+            <!--<button class="btn btn-success" onclick="guardarComoPDF();">Guardar datos</button>-->
+       <!-- </div>-->
+    </div>
+
+    <script>
+        function guardarComoPDF() {
+            // Abre una nueva ventana con la dirección especificada
+            var ventana = window.open('http://127.0.0.1:5000/imprimirEstadistica', '_blank');
+
+            // Espera a que se cargue el contenido de la ventana
+            ventana.onload = function () {
+                // Presiona la tecla Ctrl + P para abrir la ventana de impresión
+                ventana.document.body.focus();
+                ventana.print();
+
+                // Cierra la ventana después de 1 segundo
+                setTimeout(function () { ventana.close(); }, 1000);
+            }
+        }
+    </script>
+</div>
+{% endblock %}

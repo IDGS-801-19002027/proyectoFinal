@@ -4,31 +4,34 @@ from sqlalchemy import update
 from werkzeug.security import generate_password_hash
 from flask import url_for
 from flask import Blueprint
-from flask_login import login_required
+from flask_login import current_user, login_required
 from flask_security import roles_accepted
 from ..models import User, Role, users_roles
-from .. import db, userDataStore
+from .. import db, userDataStore, main
 
 usuarios = Blueprint('usuarios', __name__)
 
 @usuarios.route('/usuarios', methods=['GET', 'POST'])
-@login_required
+@login_required 
 @roles_accepted("Administrador")
 def getAllUsers():
     usuarios = db.session.query(User).filter_by(estatus=1).all()
+    main.registrarLogs("Ingreso al módulo de usuarios. Usuario: "+current_user.nombre, 'info', 'bitacora')
 
     if request.method =='POST':
         st = request.form.get("estatus")
+        main.registrarLogs("El usuario "+current_user.nombre+" cambio la vista a usuarios con estatus "+st, 'info', 'bitacora')
         usuarios =  db.session.query(User).filter_by(estatus=st).all()
-        render_template('admin/usuarios.html', usuarios=usuarios)
+        render_template('admin/usuario/usuarios.html', usuarios=usuarios)
         
-    return render_template('admin/usuarios.html', usuarios=usuarios)
+    return render_template('admin/usuario/usuarios.html', usuarios=usuarios)
 
 @usuarios.route('/agregar-usuario', methods=['GET', 'POST'])
 @login_required
 @roles_accepted("Administrador")
 def addUsers():
-
+    main.registrarLogs("Visualizo el formulario de registro de usuario. Usuario: "+current_user.nombre, 
+                       'info', 'bitacora')
     if request.method=='POST':
         name = request.form.get('name')
         lastName = request.form.get('lastName')
@@ -52,10 +55,11 @@ def addUsers():
         #Le agregamos el rol al usuario
         userDataStore.add_role_to_user(RecentUser, rolN)
         db.session.commit()
-
+        main.registrarLogs("El usuario "+current_user.nombre+" registro a un "+rolN.name+" con los datos: \
+                           Nombre: "+name+" "+lastName+", Correo = "+email, 'info', 'transaccion')
         return redirect(url_for('usuarios.getAllUsers'))
 
-    return render_template('admin/agregarUsuario.html')
+    return render_template('admin/usuario/agregarUsuario.html')
 
 @usuarios.route('/modificar-usuario', methods=['GET', 'POST'])
 @login_required
@@ -63,7 +67,8 @@ def addUsers():
 def updateUsers():
     id = request.args.get('id')
     usuario = db.session.query(User).filter(User.id == id).first()
-
+    main.registrarLogs("El usuario "+current_user.nombre+" visualizo el formulario para modificar un usuario",
+                       'info', 'bitacora')
     if request.method=='POST':
         id = request.form.get('idUsuario')
         modifUser = db.session.query(User).filter(User.id == id).first()
@@ -84,9 +89,12 @@ def updateUsers():
         #Guarda los cambios
         db.session.commit()
 
+        main.registrarLogs("El usuario "+current_user.nombre+" modificó al usuario. Algunos de los nuevos datos son:"+
+                           "Nombre: "+modifUser.nombre+" "+modifUser.apellidos+", Correo: "+modifUser.email, 'info', 'transaccion')
+
         return redirect(url_for('usuarios.getAllUsers'))
     
-    return render_template('admin/actualizarUsuario.html', usuario=usuario)
+    return render_template('admin/usuario/actualizarUsuario.html', usuario=usuario)
 
 @usuarios.route('/eliminar-usuario', methods=['GET', 'POST'])
 @login_required
@@ -94,6 +102,7 @@ def updateUsers():
 def deleteUsers():
     id = request.args.get('id')
     usuario = db.session.query(User).filter(User.id == id).first()
+    main.registrarLogs("El usuario "+current_user.nombre+" visualizo el menú para eliminar lógicamente un usuario", 'info', 'bitacora')
 
     if request.method=='POST':
         id = request.args.get('id')
@@ -103,9 +112,11 @@ def deleteUsers():
 
         db.session.add(usuarioD)
         db.session.commit()
+        main.registrarLogs("El usuario "+current_user.nombre+" eliminó logicamente al usuario con el \
+                           nombre: "+usuarioD.nombre+" "+usuarioD.nombre+", Correo: "+usuarioD.email, 'info', 'transaccion')
         return redirect(url_for('usuarios.getAllUsers'))
     
-    return render_template('admin/eliminarUsuario.html', usuario=usuario)
+    return render_template('admin/usuario/eliminarUsuario.html', usuario=usuario)
 
 @usuarios.route('/reactivar-usuario', methods=['GET', 'POST'])
 @login_required
@@ -113,6 +124,8 @@ def deleteUsers():
 def reactivateUsers():
     id = request.args.get('id')
     usuario = db.session.query(User).filter(User.id == id).first()
+    main.registrarLogs("El usuario "+current_user.nombre+" visualizo el formulario para reactivar usuarios",
+                       'info', 'bitacora')
 
     if request.method=='POST':
         id = request.args.get('id')
@@ -122,6 +135,9 @@ def reactivateUsers():
 
         db.session.add(usuarioR)
         db.session.commit()
+        main.registrarLogs("El usuario "+current_user.nombre+" reactivo al usuario con los datos: \
+                           Nombre: "+usuarioR.nombre+" "+usuarioR.apellidos+", Correo: "+usuarioR.email, 
+                           'info', 'transaccion')
         return redirect(url_for('usuarios.getAllUsers'))
     
-    return render_template('admin/reactivarUsuario.html', usuario=usuario)
+    return render_template('admin/usuario/reactivarUsuario.html', usuario=usuario)

@@ -5,6 +5,7 @@ body{
 	padding:0;
 }
 #header{
+	background:url(../static/img/flowers/images/bg-header.jpg) repeat-x center top;
 	margin:0;
 	padding:0;
 	overflow:hidden;
@@ -64,7 +65,7 @@ body{
 	border:0;
 }
 #body{
-	background:#fefef6 url(../static/img/logo-flores-prototipo1.png) repeat-x top left;
+	background:#fefef6 url(../static/img/flowers/bg-content.gif) repeat-x top left;
 	margin:0;
 	padding:0;
 	min-width:960px;

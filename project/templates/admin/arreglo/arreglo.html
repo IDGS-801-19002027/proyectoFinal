@@ -60,7 +60,6 @@
         <div class="col-sm-6 text-center">
             {{ render_field(form.nombre, class="form-control") }}
         </div>
-
         <div class="col-sm-6 text-center">
             {{ render_field(form.rutaFoto, class="form-select") }}
         </div>
@@ -72,10 +71,9 @@
         <div class="col-sm-6 text-center mt-2">
             {{ render_field(form.precioVenta, class="form-control") }}
             <button class="btn btn-success form-control mt-2"><i class="fas fa-check"></i> Guardar</button>
-
         </div>
     </form>
-
+    <img id="fotoSeleccionada" src="{{ url_for('static', filename='img/default.jpg') }}" width="" height="300" alt="foto-arreglo">
 
     <div class="col-lg-12 mt-4">
         <div class="table-responsive">
@@ -154,6 +152,14 @@
 
         });
 
+    });
+</script>
+<script>
+    var rutaFoto = document.getElementById("rutaFoto");
+    var fotoSeleccionada = document.getElementById("fotoSeleccionada");
+    rutaFoto.addEventListener("change", function() {
+        var seleccion = rutaFoto.options[rutaFoto.selectedIndex].value;
+        fotoSeleccionada.src = "{{ url_for('static', filename='img') }}/" + seleccion + ".jpg";
     });
 </script>
 
