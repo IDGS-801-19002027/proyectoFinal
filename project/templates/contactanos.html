@@ -1,0 +1,74 @@
+{% extends "main.html" %}
+
+{% block contents %}
+<style>
+  p, span {
+    font-size: medium !important;
+  }
+</style>
+<div class="content">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <h3 class="text-success">>{{ message }}</h3>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <div id="body">
+    <div class="contact">
+      <h1 class="text-center mt-4">Contáctanos</h1>
+      <p>En <em>La Casa De Las Flores</em>, nos encanta escuchar a nuestros clientes. Si tienes alguna pregunta,
+        comentario o sugerencia, no dudes en ponerte en contacto con nosotros. <br><br> Estamos comprometidos en
+        proporcionarte una experiencia de compra excepcional, por lo que haremos todo lo posible para
+        resolver cualquier problema o inquietud que puedas tener. Ya sea que prefieras comunicarte por
+        correo electrónico o acudir a nuestras sucursales, nuestro equipo de atención al cliente estará
+        encantado de ayudarte en lo que necesites. <br><br> ¡Esperamos escuchar de ti pronto!</p>
+      <div>
+        <div>
+          <div>
+            <ul>
+              <hr>
+              <h3 class="text-center">Horario de nuestras sucursales</h3>
+              <hr>
+              <li><span>Lunes</span>9:00 - 17:30</li>
+              <li><span>Martes</span>9:00- 17:30</li>
+              <li><span>Miércoles</span>9:00- 17:30</li>
+              <li><span>Jueves</span>9:00 - 17:30</li>
+              <li><span>Viernes</span>9:00 - 17:30</li>
+              <li><span>Sábado</span>9:00 - 17:30</li>
+            </ul>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <section class="contact_section layout_padding">
+      <div class="container">
+        <div class="col-md-6">
+          <h1 class="text-center">Déjanos tus comentarios</h1>
+          <form action="/contacto" method="POST" class="text-center">
+            <div>
+              <input type="email" placeholder="Escribe tu correo" name="correo" class="form-control" required />
+            </div>
+            <div>
+              <textarea class="form-control mt-2" name="mensaje" id="message" cols="50" rows="10"
+                placeholder="Escribe tus comentarios" required></textarea>
+            </div>
+            <div class="d-flex justify-content-center mt-4 ">
+              <button type="submit" style="background:darkorange;
+                width:200px;
+                font-size:16px;
+                height:40px;
+                color:#fff;
+                text-decoration:none;
+                border:none;" class="btn"><i class="fas fa-paper-plane"></i> Enviar comentarios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
